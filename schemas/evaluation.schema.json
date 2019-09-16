@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/valeriy42/evaluation-schema/master/schemas/evaluation.schema.json",
+  "title": "evaluation",
+  "description": "Details of the model evaluation step.",
+  "type": "object",
+  "definitions": {
+    "numeric_relationship": {
+      "$id": "#numeric_relationship",
+      "type": "string",
+      "enum": [
+        "<="
+      ]
+    },
+    "basic_evaluator": {
+      "type": "object",
+      "$id": "#basic_evaluator",
+      "properties": {
+        "feature_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tree_node": {
+      "$id": "#tree_node",
+      "type": "object",
+      "properties": {
+        "split_index": {
+          "type": "integer"
+        },
+        "split_feature": {
+          "type": "integer"
+        },
+        "split_gain": {
+          "type": "number"
+        },
+        "threshold": {
+          "type": "number"
+        },
+        "decision_type": {
+          "$ref": "#numeric_relationship"
+        },
+        "default_left": {
+          "type": "boolean"
+        },
+        "left_child": {
+          "$ref": "#tree_node"
+        },
+        "right_child": {
+          "$ref": "#tree_node"
+        }
+      },
+      "required": [
+        "split_index",
+        "split_feature",
+        "split_gain",
+        "threshold",
+        "decision_type",
+        "default_left",
+        "left_child",
+        "right_child"
+      ]
+    },
+    "tree": {
+      "$id": "#tree",
+      "allOf": [
+        {
+          "$ref": "#basic_evaluator"
+        },
+        {
+          "properties": {
+            "tree_structure": {
+              "$ref": "#tree_node"
+            }
+          },
+          "required": [
+            "tree_structure"
+          ]
+        }
+      ]
+    },
+    "ensemble": {
+      "$id": "#enseble",
+      "allOf": [
+        {
+          "$ref": "#basic_evaluator"
+        },
+        {
+          "properties": {
+            "ensemble_structure": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "oneOf": [
+                  {
+                    "$ref": "#tree"
+                  }
+                ]
+              }
+            },
+            "aggregate_output": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "weighted_sum": {
+                      "type": "object",
+                      "properties": {
+                        "weights": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "required": [
+                        "weights"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "weighted_sum"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "weighted_mode": {
+                      "type": "object",
+                      "description": "Allows to used (weighted) majority vote for classification.",
+                      "properties": {
+                        "weights": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "required": [
+                        "weights"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "weighted_mode"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

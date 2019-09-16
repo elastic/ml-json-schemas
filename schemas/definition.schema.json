@@ -19,6 +19,8 @@
     }
   },
   "required": [
-    "input"
-  ]
+    "input",
+    "evaluation"
+  ],
+  "additionalProperties": false
 }

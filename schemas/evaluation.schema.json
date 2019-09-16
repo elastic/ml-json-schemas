@@ -22,7 +22,8 @@
             "type": "string"
           }
         }
-      }
+      },
+      "additionalProperties": false
     },
     "tree_node": {
       "$id": "#tree_node",

@@ -20,6 +20,7 @@
     {
       "target_mean_encoding": {
         "field": "col2",
+        "feature_name": "col2_encoded",
         "target_map": {
           "S": 5.0,
           "M": 10.0,
@@ -30,12 +31,98 @@
     {
       "frequency_encoding": {
         "field": "col3",
+        "feature_name": "col3_encoded",
         "frequency_map": {
-          "none": 0.8,
+          "none": 0.75,
           "true": 0.10,
-          "false": 0.10
+          "false": 0.15
         }
       }
     }
-  ]
+  ],
+  "evaluation": {
+    "ensemble": {
+      "feature_names": [
+        "col1_male",
+        "col1_female",
+        "col2_encoded",
+        "col3_encoded",
+        "col4"
+      ],
+      "aggregate_output": {
+        "weighted_sum": {
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      },
+      "models": [
+        {
+          "tree": {
+            "feature_names": [
+              "col1_male",
+              "col1_female",
+              "col4"
+            ],
+            "tree_structure": {
+              "split_index": 0,
+              "split_feature": 0,
+              "split_gain": 42.0,
+              "threshold": 0.5,
+              "decision_type": "<=",
+              "default_left": true,
+              "left_child": {
+                "split_index": 1,
+                "split_feature": 1,
+                "split_gain": 20.0,
+                "threshold": 0.5,
+                "decision_type": "<=",
+                "default_left": true
+              },
+              "right_child": {
+                "split_index": 2,
+                "split_feature": 2,
+                "threshold": 2.5,
+                "decision_type": "<=",
+                "default_left": true
+              }
+            }
+          }
+        },
+        {
+          "tree": {
+            "feature_names": [
+              "col2_encoded",
+              "col3_encoded",
+              "col4"
+            ],
+            "tree_structure": {
+              "split_index": 0,
+              "split_feature": 0,
+              "split_gain": 12.0,
+              "threshold": 10.0,
+              "decision_type": "<=",
+              "default_left": true,
+              "left_child": {
+                "split_index": 1,
+                "split_feature": 1,
+                "split_gain": 0.5,
+                "threshold": 0.25,
+                "decision_type": "<=",
+                "default_left": true
+              },
+              "right_child": {
+                "split_index": 2,
+                "split_feature": 2,
+                "threshold": 2.5,
+                "decision_type": "<=",
+                "default_left": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
 }

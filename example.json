@@ -1,0 +1,51 @@
+{
+  "input": {
+    "columns": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ]
+  },
+  "preprocessing": [
+    {
+      "one_hot_encoding": {
+        "field": "a",
+        "hot_map": {
+          "boy": "a_boy",
+          "girl": "a_girl"
+        }
+      }
+    },
+    {
+      "target_mean_encoding": {
+        "field": "b",
+        "target_map": {
+          "S": 5.0,
+          "M": 10.0,
+          "L": 20
+        }
+      }
+    },
+    {
+      "frequency_encoding": {
+        "field": "c",
+        "frequency_map": {
+          "none": 0.8,
+          "true": 0.10,
+          "false": 0.10
+        }
+      }
+    },
+    {
+      "target_mean_encoding": {
+        "field": "d",
+        "target_map": {
+          "S": 5.0,
+          "M": 10.0,
+          "L": 20
+        }
+      }
+    }
+  ]
+}

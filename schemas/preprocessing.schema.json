@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "preprocessing",
+  "description": "Steps for data pre-processing.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "one_hot_encoding": {
+            "description": "Application of the one-hot encoding function on a single column.",
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "Input field name. Must be defined in the input section.",
+                "type": "string"
+              },
+              "hot_map": {
+                "type": "object",
+                "description": "Map from the category names of the original field to the new field names."
+              }
+            },
+            "required": [
+              "field",
+              "hot_map"
+            ]
+          }
+        },
+        "required": [
+          "one_hot_encoding"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "target_mean_encoding": {
+            "description": "Mapping from categorical columns to numerical values related to the target value",
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "target_map": {
+                "type": "object",
+                "description": "Map from the category names to the target values.",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "field",
+              "target_map"
+            ]
+          }
+        },
+        "required": [
+          "target_mean_encoding"
+        ]
+      },
+      {
+        "type": "object",
+        "properties": {
+          "frequency_encoding": {
+            "description": "Mapping from categorical columns to numerical values related to categorical value distribution",
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "frequency_map": {
+                "type": "object",
+                "description": "Map from the category names to the frequency values.",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "field",
+              "frequency_map"
+            ]
+          }
+        },
+        "required": ["frequency_encoding"]
+      }
+    ]
+  },
+  "minItems": 0,
+  "uniqueItems": true
+}

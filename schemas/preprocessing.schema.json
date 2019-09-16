@@ -41,7 +41,11 @@
             "type": "object",
             "properties": {
               "field": {
+                "description": "Input field name",
                 "type": "string"
+              },
+              "feature_name": {
+                "description": "Feature name after pre-processing"
               },
               "target_map": {
                 "type": "object",
@@ -53,6 +57,7 @@
             },
             "required": [
               "field",
+              "feature_name",
               "target_map"
             ]
           }
@@ -69,7 +74,11 @@
             "type": "object",
             "properties": {
               "field": {
+                "description": "Input field name",
                 "type": "string"
+              },
+              "feature_name": {
+                "description": "Feature name after pre-processing"
               },
               "frequency_map": {
                 "type": "object",
@@ -81,11 +90,14 @@
             },
             "required": [
               "field",
+              "feature_name",
               "frequency_map"
             ]
           }
         },
-        "required": ["frequency_encoding"]
+        "required": [
+          "frequency_encoding"
+        ]
       }
     ]
   },

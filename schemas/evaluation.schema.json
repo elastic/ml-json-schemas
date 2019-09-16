@@ -56,7 +56,6 @@
       "required": [
         "split_index",
         "split_feature",
-        "split_gain",
         "threshold",
         "decision_type",
         "default_left",
@@ -90,7 +89,7 @@
         },
         {
           "properties": {
-            "ensemble_structure": {
+            "models": {
               "type": "array",
               "items": {
                 "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/evaluation-schema/master/schemas/input.schema.json",
+  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/input.schema.json",
   "description": "Information related to the input",
   "type": "object",
   "properties": {

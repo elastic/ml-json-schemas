@@ -45,7 +45,8 @@
                 "type": "string"
               },
               "feature_name": {
-                "description": "Feature name after pre-processing"
+                "description": "Feature name after pre-processing",
+                "type": "string"
               },
               "target_map": {
                 "type": "object",
@@ -78,7 +79,8 @@
                 "type": "string"
               },
               "feature_name": {
-                "description": "Feature name after pre-processing"
+                "description": "Feature name after pre-processing",
+                "type": "string"
               },
               "frequency_map": {
                 "type": "object",

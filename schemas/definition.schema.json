@@ -7,15 +7,15 @@
   "properties": {
     "input": {
       "description": "Information related to the input.",
-      "$ref": "input.schema.json"
+      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/evaluation-schema/master/schemas/input.schema.json"
     },
     "preprocessing": {
       "description": "Optional step for pre-processing data, e.g. vector embedding, one-hot-encoding, etc.",
-      "$ref": "preprocessing.schema.json"
+      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/evaluation-schema/master/schemas/preprocessing.schema.json"
     },
     "evaluation": {
       "description": "Details of the model evaluation step.",
-      "$ref": "evaluation.schema.json"
+      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/evaluation-schema/master/schemas/evaluation.schema.json"
     }
   },
   "required": [

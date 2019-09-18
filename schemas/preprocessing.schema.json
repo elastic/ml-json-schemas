@@ -23,8 +23,7 @@
                 "description": "Map from the category names of the original field to the new field names.",
                 "additionalProperties": {
                   "type": "string"
-                },
-                "minProperties": 2
+                }
               }
             },
             "required": [
@@ -57,14 +56,18 @@
                 "description": "Map from the category names to the target values.",
                 "additionalProperties": {
                   "type": "number"
-                },
-                "minProperties": 2
+                }
+              },
+              "default_value": {
+                "description": "Value for categories that have not been seen before",
+                "type": "number"
               }
             },
             "required": [
               "field",
               "feature_name",
-              "target_map"
+              "target_map",
+              "default_value"
             ]
           }
         },
@@ -92,13 +95,18 @@
                 "description": "Map from the category names to the frequency values.",
                 "additionalProperties": {
                   "type": "number"
+                },
+                "default_value": {
+                  "description": "Value for categories that have not been seen before",
+                  "type": "number"
                 }
               }
             },
             "required": [
               "field",
               "feature_name",
-              "frequency_map"
+              "frequency_map",
+              "default_value"
             ]
           }
         },

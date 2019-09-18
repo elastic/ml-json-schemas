@@ -8,7 +8,7 @@ For more information vision [Quicktype GitHub repository](https://github.com/qui
 ```bash
 quicktype -l c++ --namespace ml --code-format with-struct --source-style single-source \
 --type-style pascal-case \
---member-style pascal-case \
+--member-style camel-case \
 --enumerator-style pascal-case \
 --boost -s schema  \
 -S schemas/input.schema.json -S schemas/evaluation.schema.json -S schemas/preprocessing.schema.json \

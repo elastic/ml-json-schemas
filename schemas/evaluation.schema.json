@@ -41,6 +41,9 @@
         "threshold": {
           "type": "number"
         },
+        "node_value": {
+          "type": "number"
+        },
         "decision_type": {
           "$ref": "#numeric_relationship"
         },
@@ -60,8 +63,7 @@
         "threshold",
         "decision_type",
         "default_left",
-        "left_child",
-        "right_child"
+        "node_value"
       ]
     },
     "tree": {

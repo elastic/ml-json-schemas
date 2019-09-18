@@ -83,7 +83,7 @@
       ]
     },
     "ensemble": {
-      "$id": "#enseble",
+      "$id": "#ensemble",
       "allOf": [
         {
           "$ref": "#basic_evaluator"
@@ -155,5 +155,9 @@
         }
       ]
     }
-  }
+  },
+  "oneOf": [
+    {"$ref": "#tree"},
+    {"$ref": "#ensemble"}
+  ]
 }

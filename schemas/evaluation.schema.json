@@ -66,98 +66,100 @@
     },
     "tree": {
       "$id": "#tree",
-      "allOf": [
-        {
-          "$ref": "#basic_evaluator"
-        },
-        {
-          "properties": {
-            "tree_structure": {
-              "$ref": "#tree_node"
-            }
-          },
-          "required": [
-            "tree_structure"
-          ]
-        }
-      ]
-    },
-    "ensemble": {
-      "$id": "#ensemble",
-      "allOf": [
-        {
-          "$ref": "#basic_evaluator"
-        },
-        {
-          "properties": {
-            "models": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "oneOf": [
-                  {
-                    "$ref": "#tree"
-                  }
-                ]
-              }
-            },
-            "aggregate_output": {
-              "type": "object",
-              "oneOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "weighted_sum": {
-                      "type": "object",
-                      "properties": {
-                        "weights": {
-                          "type": "array",
-                          "items": {
-                            "type": "number"
-                          }
-                        }
-                      },
-                      "required": [
-                        "weights"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "weighted_sum"
-                  ]
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "weighted_mode": {
-                      "type": "object",
-                      "description": "Allows to used (weighted) majority vote for classification.",
-                      "properties": {
-                        "weights": {
-                          "type": "array",
-                          "items": {
-                            "type": "number"
-                          }
-                        }
-                      },
-                      "required": [
-                        "weights"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "weighted_mode"
-                  ]
-                }
-              ]
-            }
+      "properties": {
+        "feature_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
+        },
+        "tree_structure": {
+          "$ref": "#tree_node"
         }
+      },
+      "required": [
+        "tree_structure"
       ]
     }
   },
+  "ensemble": {
+    "$id": "#ensemble",
+    "properties": {
+      "feature_names": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "models": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#tree"
+            }
+          ]
+        }
+      },
+      "aggregate_output": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "weighted_sum": {
+                "type": "object",
+                "properties": {
+                  "weights": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": [
+                  "weights"
+                ]
+              }
+            },
+            "required": [
+              "weighted_sum"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "weighted_mode": {
+                "type": "object",
+                "description": "Allows to used (weighted) majority vote for classification.",
+                "properties": {
+                  "weights": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": [
+                  "weights"
+                ]
+              }
+            },
+            "required": [
+              "weighted_mode"
+            ]
+          }
+        ]
+      }
+    }
+  },
   "oneOf": [
-    {"$ref": "#tree"},
-    {"$ref": "#ensemble"}
+    {
+      "$ref": "#tree"
+    },
+    {
+      "$ref": "#ensemble"
+    }
   ]
 }

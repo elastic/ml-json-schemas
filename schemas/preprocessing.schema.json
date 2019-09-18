@@ -95,18 +95,13 @@
                 "description": "Map from the category names to the frequency values.",
                 "additionalProperties": {
                   "type": "number"
-                },
-                "default_value": {
-                  "description": "Value for categories that have not been seen before",
-                  "type": "number"
                 }
               }
             },
             "required": [
               "field",
               "feature_name",
-              "frequency_map",
-              "default_value"
+              "frequency_map"
             ]
           }
         },

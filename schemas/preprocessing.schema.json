@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/valeriy42/evaluation-schema/master/schemas/preprocessing.schema.json",
+  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/evaluation-schema/master/schemas/preprocessing.schema.json",
   "title": "preprocessing",
   "description": "Steps for data pre-processing.",
   "type": "array",

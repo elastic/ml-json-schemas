@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/valeriy42/evaluation-schema/master/schemas/evaluation.schema.json",
+  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/evaluation.schema.json",
   "title": "evaluation",
   "description": "Details of the model evaluation step.",
   "type": "object",
@@ -41,6 +41,9 @@
         "threshold": {
           "type": "number"
         },
+        "node_value": {
+          "type": "number"
+        },
         "decision_type": {
           "$ref": "#numeric_relationship"
         },
@@ -60,100 +63,105 @@
         "threshold",
         "decision_type",
         "default_left",
-        "left_child",
-        "right_child"
+        "node_value"
       ]
     },
     "tree": {
       "$id": "#tree",
-      "allOf": [
-        {
-          "$ref": "#basic_evaluator"
+      "properties": {
+        "feature_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
-        {
-          "properties": {
-            "tree_structure": {
-              "$ref": "#tree_node"
+        "tree_structure": {
+          "$ref": "#tree_node"
+        }
+      },
+      "required": [
+        "tree_structure"
+      ]
+    }
+  },
+  "ensemble": {
+    "$id": "#ensemble",
+    "properties": {
+      "feature_names": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "models": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#tree"
             }
-          },
-          "required": [
-            "tree_structure"
           ]
         }
-      ]
-    },
-    "ensemble": {
-      "$id": "#enseble",
-      "allOf": [
-        {
-          "$ref": "#basic_evaluator"
-        },
-        {
-          "properties": {
-            "models": {
-              "type": "array",
-              "items": {
+      },
+      "aggregate_output": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "weighted_sum": {
                 "type": "object",
-                "oneOf": [
-                  {
-                    "$ref": "#tree"
+                "properties": {
+                  "weights": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
                   }
+                },
+                "required": [
+                  "weights"
                 ]
               }
             },
-            "aggregate_output": {
-              "type": "object",
-              "oneOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "weighted_sum": {
-                      "type": "object",
-                      "properties": {
-                        "weights": {
-                          "type": "array",
-                          "items": {
-                            "type": "number"
-                          }
-                        }
-                      },
-                      "required": [
-                        "weights"
-                      ]
+            "required": [
+              "weighted_sum"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "weighted_mode": {
+                "type": "object",
+                "description": "Allows to used (weighted) majority vote for classification.",
+                "properties": {
+                  "weights": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
                     }
-                  },
-                  "required": [
-                    "weighted_sum"
-                  ]
+                  }
                 },
-                {
-                  "type": "object",
-                  "properties": {
-                    "weighted_mode": {
-                      "type": "object",
-                      "description": "Allows to used (weighted) majority vote for classification.",
-                      "properties": {
-                        "weights": {
-                          "type": "array",
-                          "items": {
-                            "type": "number"
-                          }
-                        }
-                      },
-                      "required": [
-                        "weights"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "weighted_mode"
-                  ]
-                }
-              ]
-            }
+                "required": [
+                  "weights"
+                ]
+              }
+            },
+            "required": [
+              "weighted_mode"
+            ]
           }
-        }
-      ]
+        ]
+      }
     }
-  }
+  },
+  "oneOf": [
+    {
+      "$ref": "#tree"
+    },
+    {
+      "$ref": "#ensemble"
+    }
+  ]
 }

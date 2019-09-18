@@ -1,21 +1,21 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/valeriy42/evaluation-schema/master/schemas/definition.schema.json",
+  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/definition.schema.json",
   "title": "definition",
   "description": "Technical details required for model evaluation.",
   "type": "object",
   "properties": {
     "input": {
       "description": "Information related to the input.",
-      "$ref": "input.schema.json"
+      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/input.schema.json"
     },
     "preprocessing": {
       "description": "Optional step for pre-processing data, e.g. vector embedding, one-hot-encoding, etc.",
-      "$ref": "preprocessing.schema.json"
+      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/preprocessing.schema.json"
     },
     "evaluation": {
       "description": "Details of the model evaluation step.",
-      "$ref": "evaluation.schema.json"
+      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/evaluation.schema.json"
     }
   },
   "required": [

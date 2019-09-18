@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/valeriy42/evaluation-schema/master/schemas/preprocessing.schema.json",
+  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/preprocessing.schema.json",
   "title": "preprocessing",
   "description": "Steps for data pre-processing.",
   "type": "array",
@@ -20,7 +20,10 @@
               },
               "hot_map": {
                 "type": "object",
-                "description": "Map from the category names of the original field to the new field names."
+                "description": "Map from the category names of the original field to the new field names.",
+                "additionalProperties": {
+                  "type": "string"
+                }
               }
             },
             "required": [
@@ -45,7 +48,8 @@
                 "type": "string"
               },
               "feature_name": {
-                "description": "Feature name after pre-processing"
+                "description": "Feature name after pre-processing",
+                "type": "string"
               },
               "target_map": {
                 "type": "object",
@@ -53,12 +57,17 @@
                 "additionalProperties": {
                   "type": "number"
                 }
+              },
+              "default_value": {
+                "description": "Value for categories that have not been seen before",
+                "type": "number"
               }
             },
             "required": [
               "field",
               "feature_name",
-              "target_map"
+              "target_map",
+              "default_value"
             ]
           }
         },
@@ -78,7 +87,8 @@
                 "type": "string"
               },
               "feature_name": {
-                "description": "Feature name after pre-processing"
+                "description": "Feature name after pre-processing",
+                "type": "string"
               },
               "frequency_map": {
                 "type": "object",

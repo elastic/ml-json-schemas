@@ -13,7 +13,7 @@
         "field": "col1",
         "hot_map": {
           "male": "col1_male",
-          "female": "col2_female"
+          "female": "col1_female"
         }
       }
     },
@@ -25,7 +25,8 @@
           "S": 5.0,
           "M": 10.0,
           "L": 20
-        }
+        },
+        "default_value": 5.0
       }
     },
     {

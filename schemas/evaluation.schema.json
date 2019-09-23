@@ -51,10 +51,10 @@
           "type": "boolean"
         },
         "left_child": {
-          "$ref": "#tree_node"
+          "type": "integer"
         },
         "right_child": {
-          "$ref": "#tree_node"
+          "type": "integer"
         }
       },
       "required": [
@@ -76,7 +76,10 @@
           }
         },
         "tree_structure": {
-          "$ref": "#tree_node"
+          "type": "array",
+          "items": {
+            "$ref": "#tree_node"
+          }
         }
       },
       "required": [

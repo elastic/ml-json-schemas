@@ -13,14 +13,14 @@
       "description": "Optional step for pre-processing data, e.g. vector embedding, one-hot-encoding, etc.",
       "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/preprocessing.schema.json"
     },
-    "evaluation": {
-      "description": "Details of the model evaluation step.",
-      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/evaluation.schema.json"
+    "trained_model": {
+      "description": "Details of the model evaluation step with a trained_model.",
+      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/trained_model.schema.json"
     }
   },
   "required": [
     "input",
-    "evaluation"
+    "trained_model"
   ],
   "additionalProperties": false
 }

@@ -11,6 +11,6 @@ quicktype -l c++ --namespace ml --code-format with-struct --source-style single-
 --member-style camel-case \
 --enumerator-style pascal-case \
 --boost -s schema  \
--S schemas/input.schema.json -S schemas/evaluation.schema.json -S schemas/preprocessing.schema.json \
+-S schemas/input.schema.json -S schemas/trained_model.schema.json -S schemas/preprocessing.schema.json \
 -o cpp/InferenceModelDefinition.hpp ./schemas/definition.schema.json
 ```

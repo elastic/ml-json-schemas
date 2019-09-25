@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/evaluation.schema.json",
-  "title": "evaluation",
+  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/trained_model.schema.json",
+  "title": "trained_model",
   "description": "Details of the model evaluation step.",
   "type": "object",
   "definitions": {
@@ -29,7 +29,7 @@
       "$id": "#tree_node",
       "type": "object",
       "properties": {
-        "split_index": {
+        "node_index": {
           "type": "integer"
         },
         "split_feature": {
@@ -41,7 +41,7 @@
         "threshold": {
           "type": "number"
         },
-        "node_value": {
+        "leaf_value": {
           "type": "number"
         },
         "decision_type": {
@@ -62,8 +62,7 @@
         "split_feature",
         "threshold",
         "decision_type",
-        "default_left",
-        "node_value"
+        "default_left"
       ]
     },
     "tree": {
@@ -95,7 +94,7 @@
             "type": "string"
           }
         },
-        "models": {
+        "trained_models": {
           "type": "array",
           "items": {
             "type": "object",

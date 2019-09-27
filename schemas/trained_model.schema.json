@@ -21,6 +21,18 @@
           "items": {
             "type": "string"
           }
+        },
+        "classification_labels": {
+          "items": {
+            "type": "string"
+          }
+        },
+        "target_type": {
+          "type": "string",
+          "enum": [
+            "classification",
+            "regression"
+          ]
         }
       },
       "additionalProperties": false
@@ -79,10 +91,24 @@
           "items": {
             "$ref": "#tree_node"
           }
+        },
+        "classification_labels": {
+          "items": {
+            "type": "string"
+          }
+        },
+        "target_type": {
+          "type": "string",
+          "enum": [
+            "classification",
+            "regression"
+          ]
         }
       },
       "required": [
-        "tree_structure"
+        "tree_structure",
+        "target_type",
+        "feature_names"
       ]
     },
     "ensemble": {
@@ -104,6 +130,18 @@
               }
             ]
           }
+        },
+        "classification_labels": {
+          "items": {
+            "type": "string"
+          }
+        },
+        "target_type": {
+          "type": "string",
+          "enum": [
+            "classification",
+            "regression"
+          ]
         },
         "aggregate_output": {
           "type": "object",
@@ -155,7 +193,12 @@
             }
           ]
         }
-      }
+      },
+      "required": [
+        "target_type",
+        "trained_models",
+        "feature_names"
+      ]
     }
   },
   "oneOf": [

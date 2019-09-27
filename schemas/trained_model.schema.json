@@ -107,7 +107,6 @@
       },
       "required": [
         "tree_structure",
-        "target_type",
         "feature_names"
       ]
     },
@@ -193,12 +192,7 @@
             }
           ]
         }
-      },
-      "required": [
-        "target_type",
-        "trained_models",
-        "feature_names"
-      ]
+      }
     }
   },
   "oneOf": [

@@ -129,7 +129,9 @@
                 "$ref": "#/definitions/tree"
               }
             },
-            "required": ["tree"],
+            "required": [
+              "tree"
+            ],
             "additionalProperties": false
           }
         },
@@ -205,13 +207,28 @@
       "additionalProperties": false
     }
   },
-  "properties": {
-    "ensemble": {
-      "$ref": "#/definitions/ensemble"
+  "oneOf": [
+    {
+      "properties": {
+        "ensemble": {
+          "$ref": "#/definitions/ensemble"
+        }
+      },
+      "required": [
+        "ensemble"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "tree": {
+          "$ref": "#/definitions/tree"
+        }
+      },
+      "required": [
+        "tree"
+      ],
+      "additionalProperties": false
     }
-  },
-  "required": [
-    "ensemble"
-  ],
-  "additionalProperties": false
+  ]
 }

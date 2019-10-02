@@ -197,10 +197,10 @@
   },
   "oneOf": [
     {
-      "$ref": "#tree"
+      "$ref": "#/definitions/tree"
     },
     {
-      "$ref": "#ensemble"
+      "$ref": "#/definitions/ensemble"
     }
   ]
 }

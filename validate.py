@@ -8,9 +8,9 @@ if __name__ == '__main__':
         data = f.read()
         definition = json.loads(data)
 
-    with open("schemas/evaluation.schema.json", 'r') as f:
+    with open("schemas/trained_model.schema.json", 'r') as f:
         data = f.read()
-        evaluation = json.loads(data)
+        trained_model = json.loads(data)
 
     with open("schemas/input.schema.json", 'r') as f:
         data = f.read()
@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     store = {
         "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/definition.schema.json": definition,
-        "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/evaluation.schema.json": evaluation,
+        "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/trained_model.schema.json": trained_model,
         "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/input.schema.json": input,
         "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/preprocessing.schema.json": preprocessing
 
@@ -32,6 +32,9 @@ if __name__ == '__main__':
     resolver = jsonschema.RefResolver(base_uri='file:' + full_path, referrer=None, store=store)
     validator = Draft7Validator(schema=definition, resolver=resolver)
     validator.check_schema(definition)
+    validator.check_schema(input)
+    validator.check_schema(preprocessing)
+    validator.check_schema(trained_model)
 
     with open("example.json", "r") as f:
         example_data = f.read()

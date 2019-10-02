@@ -57,7 +57,7 @@
           "type": "number"
         },
         "decision_type": {
-          "$ref": "#numeric_relationship"
+          "$ref": "#/definitions/numeric_relationship"
         },
         "default_left": {
           "type": "boolean"
@@ -70,7 +70,7 @@
         }
       },
       "required": [
-        "split_index",
+        "node_index",
         "split_feature",
         "threshold",
         "decision_type",
@@ -89,7 +89,7 @@
         "tree_structure": {
           "type": "array",
           "items": {
-            "$ref": "#tree_node"
+            "$ref": "#/definitions/tree_node"
           }
         },
         "classification_labels": {
@@ -107,7 +107,8 @@
       },
       "required": [
         "tree_structure",
-        "feature_names"
+        "feature_names",
+        "target_type"
       ]
     },
     "ensemble": {
@@ -123,11 +124,13 @@
           "type": "array",
           "items": {
             "type": "object",
-            "oneOf": [
-              {
-                "$ref": "#tree"
+            "properties": {
+              "tree": {
+                "$ref": "#/definitions/tree"
               }
-            ]
+            },
+            "required": ["tree"],
+            "additionalProperties": false
           }
         },
         "classification_labels": {
@@ -192,15 +195,23 @@
             }
           ]
         }
-      }
+      },
+      "required": [
+        "feature_names",
+        "trained_models",
+        "target_type",
+        "aggregate_output"
+      ],
+      "additionalProperties": false
     }
   },
-  "oneOf": [
-    {
-      "$ref": "#/definitions/tree"
-    },
-    {
+  "properties": {
+    "ensemble": {
       "$ref": "#/definitions/ensemble"
     }
-  ]
+  },
+  "required": [
+    "ensemble"
+  ],
+  "additionalProperties": false
 }

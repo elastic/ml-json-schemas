@@ -36,12 +36,12 @@ if __name__ == '__main__':
     validator.check_schema(preprocessing)
     validator.check_schema(trained_model)
 
-    with open("ensemble_example.json", "r") as f:
+    with open("examples/ensemble_example.json", "r") as f:
         example_data = f.read()
     ensemble_example = json.loads(example_data)
     validator.validate(ensemble_example, definition)
 
-    with open("tree_example.json", "r") as f:
+    with open("examples/tree_example.json", "r") as f:
         example_data = f.read()
     tree_example = json.loads(example_data)
     validator.validate(tree_example, definition)

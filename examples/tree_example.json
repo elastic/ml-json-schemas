@@ -61,18 +61,11 @@
         },
         {
           "node_index": 1,
-          "split_feature": 1,
-          "split_gain": 0.5,
-          "threshold": 0.25,
-          "decision_type": "lte",
-          "default_left": true
+          "leaf_value": 1
         },
         {
           "node_index": 2,
-          "split_feature": 2,
-          "threshold": 2.5,
-          "decision_type": "lte",
-          "default_left": true
+          "leaf_value": 2
         }
       ],
       "target_type": "regression"

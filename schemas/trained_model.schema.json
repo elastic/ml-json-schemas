@@ -53,9 +53,6 @@
         "threshold": {
           "type": "number"
         },
-        "leaf_value": {
-          "type": "number"
-        },
         "decision_type": {
           "$ref": "#/definitions/numeric_relationship"
         },
@@ -74,8 +71,28 @@
         "split_feature",
         "threshold",
         "decision_type",
-        "default_left"
-      ]
+        "default_left",
+        "left_child",
+        "right_child"
+      ],
+      "additionalProperties": false
+    },
+    "tree_leaf": {
+      "$id": "#tree_leaf",
+      "type": "object",
+      "properties": {
+        "node_index": {
+          "type": "integer"
+        },
+        "leaf_value": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "node_index",
+        "leaf_value"
+      ],
+      "additionalProperties": false
     },
     "tree": {
       "$id": "#tree",
@@ -89,7 +106,10 @@
         "tree_structure": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/tree_node"
+            "oneOf": [
+              {"$ref": "#/definitions/tree_node"},
+              {"$ref": "#/definitions/tree_leaf"}
+            ]
           }
         },
         "classification_labels": {

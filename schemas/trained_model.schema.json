@@ -53,11 +53,8 @@
         "threshold": {
           "type": "number"
         },
-        "leaf_value": {
-          "type": "number"
-        },
         "decision_type": {
-          "$ref": "#numeric_relationship"
+          "$ref": "#/definitions/numeric_relationship"
         },
         "default_left": {
           "type": "boolean"
@@ -70,12 +67,32 @@
         }
       },
       "required": [
-        "split_index",
+        "node_index",
         "split_feature",
         "threshold",
         "decision_type",
-        "default_left"
-      ]
+        "default_left",
+        "left_child",
+        "right_child"
+      ],
+      "additionalProperties": false
+    },
+    "tree_leaf": {
+      "$id": "#tree_leaf",
+      "type": "object",
+      "properties": {
+        "node_index": {
+          "type": "integer"
+        },
+        "leaf_value": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "node_index",
+        "leaf_value"
+      ],
+      "additionalProperties": false
     },
     "tree": {
       "$id": "#tree",
@@ -89,7 +106,10 @@
         "tree_structure": {
           "type": "array",
           "items": {
-            "$ref": "#tree_node"
+            "oneOf": [
+              {"$ref": "#/definitions/tree_node"},
+              {"$ref": "#/definitions/tree_leaf"}
+            ]
           }
         },
         "classification_labels": {
@@ -107,7 +127,8 @@
       },
       "required": [
         "tree_structure",
-        "feature_names"
+        "feature_names",
+        "target_type"
       ]
     },
     "ensemble": {
@@ -123,11 +144,15 @@
           "type": "array",
           "items": {
             "type": "object",
-            "oneOf": [
-              {
-                "$ref": "#tree"
+            "properties": {
+              "tree": {
+                "$ref": "#/definitions/tree"
               }
-            ]
+            },
+            "required": [
+              "tree"
+            ],
+            "additionalProperties": false
           }
         },
         "classification_labels": {
@@ -192,15 +217,38 @@
             }
           ]
         }
-      }
+      },
+      "required": [
+        "feature_names",
+        "trained_models",
+        "target_type",
+        "aggregate_output"
+      ],
+      "additionalProperties": false
     }
   },
   "oneOf": [
     {
-      "$ref": "#tree"
+      "properties": {
+        "ensemble": {
+          "$ref": "#/definitions/ensemble"
+        }
+      },
+      "required": [
+        "ensemble"
+      ],
+      "additionalProperties": false
     },
     {
-      "$ref": "#ensemble"
+      "properties": {
+        "tree": {
+          "$ref": "#/definitions/tree"
+        }
+      },
+      "required": [
+        "tree"
+      ],
+      "additionalProperties": false
     }
   ]
 }

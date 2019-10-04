@@ -1,16 +1,9 @@
 ## Model inference JSON schemas
 
-
-## Create C++ Structs using quicktype
-
-For more information vision [Quicktype GitHub repository](https://github.com/quicktype/quicktype). 
-
-```bash
-quicktype -l c++ --namespace ml --code-format with-struct --source-style single-source \
---type-style pascal-case \
---member-style camel-case \
---enumerator-style pascal-case \
---boost -s schema  \
--S schemas/input.schema.json -S schemas/trained_model.schema.json -S schemas/preprocessing.schema.json \
--o cpp/InferenceModelDefinition.hpp ./schemas/definition.schema.json
-```
+In this repository you will find among other things:
++ `examples/`
+  + `ensemble_example.json` valid example for an ensemble model
+  + `ensemble_example.json` valid example for a single tree model
++ `schemas/` directory with JSON schema files
++ `requirements.txt` PIP requirements file you will need to perform JSON validation
++ `validate.py` Python script to validate the files in the `examples/` directory. 

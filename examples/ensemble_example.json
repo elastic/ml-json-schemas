@@ -41,7 +41,7 @@
       }
     }
   ],
-  "evaluation": {
+  "trained_model": {
     "ensemble": {
       "feature_names": [
         "col1_male",
@@ -58,7 +58,8 @@
           ]
         }
       },
-      "models": [
+      "target_type": "regression",
+      "trained_models": [
         {
           "tree": {
             "feature_names": [
@@ -66,29 +67,27 @@
               "col1_female",
               "col4"
             ],
-            "tree_structure": {
-              "split_index": 0,
-              "split_feature": 0,
-              "split_gain": 42.0,
-              "threshold": 0.5,
-              "decision_type": "<=",
-              "default_left": true,
-              "left_child": {
-                "split_index": 1,
-                "split_feature": 1,
-                "split_gain": 20.0,
-                "threshold": 0.5,
-                "decision_type": "<=",
-                "default_left": true
+            "tree_structure": [
+              {
+                "node_index": 0,
+                "split_feature": 0,
+                "split_gain": 12.0,
+                "threshold": 10.0,
+                "decision_type": "lte",
+                "default_left": true,
+                "left_child": 1,
+                "right_child": 2
               },
-              "right_child": {
-                "split_index": 2,
-                "split_feature": 2,
-                "threshold": 2.5,
-                "decision_type": "<=",
-                "default_left": true
+              {
+                "node_index": 1,
+                "leaf_value": 1
+              },
+              {
+                "node_index": 2,
+                "leaf_value": 2
               }
-            }
+            ],
+            "target_type": "regression"
           }
         },
         {
@@ -98,29 +97,27 @@
               "col3_encoded",
               "col4"
             ],
-            "tree_structure": {
-              "split_index": 0,
-              "split_feature": 0,
-              "split_gain": 12.0,
-              "threshold": 10.0,
-              "decision_type": "<=",
-              "default_left": true,
-              "left_child": {
-                "split_index": 1,
-                "split_feature": 1,
-                "split_gain": 0.5,
-                "threshold": 0.25,
-                "decision_type": "<=",
-                "default_left": true
+            "tree_structure": [
+              {
+                "node_index": 0,
+                "split_feature": 0,
+                "split_gain": 12.0,
+                "threshold": 10.0,
+                "decision_type": "lte",
+                "default_left": true,
+                "left_child": 1,
+                "right_child": 2
               },
-              "right_child": {
-                "split_index": 2,
-                "split_feature": 2,
-                "threshold": 2.5,
-                "decision_type": "<=",
-                "default_left": true
+              {
+                "node_index": 1,
+                "leaf_value": 1
+              },
+              {
+                "node_index": 2,
+                "leaf_value": 2
               }
-            }
+            ],
+            "target_type": "regression"
           }
         }
       ]

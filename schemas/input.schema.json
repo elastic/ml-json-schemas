@@ -4,8 +4,8 @@
   "description": "Information related to the input",
   "type": "object",
   "properties": {
-    "columns": {
-      "description": "List of the column names.",
+    "field_names": {
+      "description": "List of the field names.",
       "type": "array",
       "items": {
         "type": "string"

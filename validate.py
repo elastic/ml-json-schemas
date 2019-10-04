@@ -16,15 +16,15 @@ if __name__ == '__main__':
         data = f.read()
         input = json.loads(data)
 
-    with open("schemas/preprocessing.schema.json", 'r') as f:
+    with open("schemas/preprocessors.schema.json", 'r') as f:
         data = f.read()
-        preprocessing = json.loads(data)
+        preprocessors = json.loads(data)
 
     store = {
         "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/definition.schema.json": definition,
         "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/trained_model.schema.json": trained_model,
         "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/input.schema.json": input,
-        "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/preprocessing.schema.json": preprocessing
+        "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/preprocessors.schema.json": preprocessors
 
     }
 
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     validator = Draft7Validator(schema=definition, resolver=resolver)
     validator.check_schema(definition)
     validator.check_schema(input)
-    validator.check_schema(preprocessing)
+    validator.check_schema(preprocessors)
     validator.check_schema(trained_model)
 
     with open("examples/ensemble_example.json", "r") as f:

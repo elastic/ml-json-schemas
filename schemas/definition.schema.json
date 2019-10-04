@@ -9,9 +9,9 @@
       "description": "Information related to the input.",
       "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/input.schema.json"
     },
-    "preprocessing": {
+    "preprocessors": {
       "description": "Optional step for pre-processing data, e.g. vector embedding, one-hot-encoding, etc.",
-      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/preprocessing.schema.json"
+      "$ref": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/preprocessors.schema.json"
     },
     "trained_model": {
       "description": "Details of the model evaluation step with a trained_model.",

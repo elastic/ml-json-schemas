@@ -7,7 +7,7 @@
       "col4"
     ]
   },
-  "preprocessing": [
+  "preprocessors": [
     {
       "one_hot_encoding": {
         "field": "col1",

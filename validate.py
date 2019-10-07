@@ -1,5 +1,5 @@
 import jsonschema
-from jsonschema.validators import Draft7Validator
+from jsonschema.validators import Draft4Validator
 import simplejson as json
 import os
 
@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     full_path = os.path.join(os.path.dirname(__file__), "schemas")
     resolver = jsonschema.RefResolver(base_uri='file:' + full_path, referrer=None, store=store)
-    validator = Draft7Validator(schema=definition, resolver=resolver)
+    validator = Draft4Validator(schema=definition, resolver=resolver)
     validator.check_schema(definition)
     validator.check_schema(input)
     validator.check_schema(preprocessors)

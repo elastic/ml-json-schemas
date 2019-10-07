@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/trained_model.schema.json",
   "title": "trained_model",
   "description": "Details of the model evaluation step.",

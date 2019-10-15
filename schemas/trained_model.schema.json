@@ -107,8 +107,12 @@
           "type": "array",
           "items": {
             "oneOf": [
-              {"$ref": "#/definitions/tree_node"},
-              {"$ref": "#/definitions/tree_leaf"}
+              {
+                "$ref": "#/definitions/tree_node"
+              },
+              {
+                "$ref": "#/definitions/tree_leaf"
+              }
             ]
           }
         },
@@ -213,6 +217,29 @@
               },
               "required": [
                 "weighted_mode"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "logistic_regression": {
+                  "type": "object",
+                  "description": "Given a weights vector $\\vec{w}$ as a parameter and an output vector from the ensemble $\\vec{x}$, it computes the logistic regression function $1/(1 + \\exp(-\\vec{w}^T \\vec{x}))$.",
+                  "properties": {
+                    "weights": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "required": [
+                    "weights"
+                  ]
+                }
+              },
+              "required": [
+                "logistic_regression"
               ]
             }
           ]

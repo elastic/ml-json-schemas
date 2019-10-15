@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/definition.schema.combined.json",
+  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/definition.schema.json",
   "title": "definition",
   "description": "Technical details required for model evaluation.",
   "definitions": {

@@ -9,7 +9,7 @@
       "$id": "#numeric_relationship",
       "type": "string",
       "enum": [
-        "lte"
+        "lt", "lte", "gt", "gte"
       ]
     },
     "basic_evaluator": {

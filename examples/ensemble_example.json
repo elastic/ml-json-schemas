@@ -1,13 +1,13 @@
 {
   "input": {
-    "columns": [
+    "field_names": [
       "col1",
       "col2",
       "col3",
       "col4"
     ]
   },
-  "preprocessing": [
+  "preprocessors": [
     {
       "one_hot_encoding": {
         "field": "col1",

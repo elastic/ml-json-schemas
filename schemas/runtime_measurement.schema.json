@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Data frame analytics runtime measurements",
+  "type": "object",
+  "properties": {
+    "job_id": {
+      "type": "string"
+    },
+    "number_rows": {
+      "type": "integer"
+    },
+    "number_columns": {
+      "type": "integer"
+    },
+    "step": {
+      "description": "Iteration or step sequence number",
+      "type": "integer"
+    },
+    "runtime": {
+      "description": "Length of the step or iteration in ms",
+      "type": "number"
+    },
+    "parameters": {
+      "description": "Parameters related to the data frame analytics job type",
+      "type": "object",
+      "oneOf": [
+        {
+          "description": "outlier detection job parameters (not indexed)",
+          "properties": {
+            "n_neighbours": {
+              "description": "parameter value",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "integer"
+                },
+                "user_specified": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value",
+                "user_specified"
+              ]
+            },
+            "method": {
+              "description": "parameter value",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "user_specified": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value",
+                "user_specified"
+              ]
+            },
+            "compute_feature_influence": {
+              "description": "parameter value",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "boolean"
+                },
+                "user_specified": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value",
+                "user_specified"
+              ]
+            }
+          }
+        },
+        {
+          "description": "supervised learning job parameters (not indexed)",
+          "properties": {
+            "lambda": {
+              "description": "parameter value",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "user_specified": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value",
+                "user_specified"
+              ]
+            },
+            "max_tree_depth": {
+              "description": "parameter value",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "user_specified": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value",
+                "user_specified"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

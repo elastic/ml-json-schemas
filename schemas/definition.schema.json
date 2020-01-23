@@ -29,11 +29,6 @@
             "type": "string"
           }
         },
-        "classification_weights": {
-          "items": {
-            "type": "number"
-          }
-        },
         "target_type": {
           "type": "string",
           "enum": [
@@ -169,6 +164,11 @@
         "classification_labels": {
           "items": {
             "type": "string"
+          }
+        },
+        "classification_weights": {
+          "items": {
+            "type": "number"
           }
         },
         "target_type": {

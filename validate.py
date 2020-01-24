@@ -4,7 +4,7 @@ import simplejson as json
 import os
 
 if __name__ == '__main__':
-    with open("schemas/definition.schema.json", 'r') as f:
+    with open("schemas/model_definition.schema.json", 'r') as f:
         data = f.read()
         definition = json.loads(data)
 

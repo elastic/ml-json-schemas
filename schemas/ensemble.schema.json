@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/ensemble.schema.json",
+  "title": "ensemble",
+  "description": "Technical specification for an ensemble model definition.",
+  "definitions": {
+    "numeric_relationship": {
+      "$id": "#numeric_relationship",
+      "type": "string",
+      "enum": [
+        "lt",
+        "lte",
+        "gt",
+        "gte"
+      ]
+    },
+    "weighted_sum": {
+      "$id": "#weighted_sum",
+      "type": "object",
+      "properties": {
+        "weights": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "weights"
+      ]
+    },
+    "weighted_mode": {
+      "$id": "#weighted_mode",
+      "type": "object",
+      "description": "Allows to used (weighted) majority vote for classification.",
+      "properties": {
+        "weights": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "weights"
+      ]
+    },
+    "logistic_regression": {
+      "$id": "#logistic_regression",
+      "type": "object",
+      "description": "Given a weights vector $\\vec{w}$ as a parameter and an output vector from the ensemble $\\vec{x}$, it computes the logistic regression function $1/(1 + \\exp(-\\vec{w}^T \\vec{x}))$.",
+      "properties": {
+        "weights": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "weights"
+      ]
+    }
+  },
+  "properties": {
+    "feature_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trained_models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "tree": {
+              "$ref": "tree.schema.json"
+            },
+            "required": [
+              "tree"
+            ]
+          },
+          {
+            "ensemble": {
+              "$ref": "ensemble.schema.json"
+            },
+            "required": [
+              "ensemble"
+            ]
+          }
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "classification_labels": {
+      "items": {
+        "type": "string"
+      }
+    },
+    "classification_weights": {
+      "items": {
+        "type": "number"
+      }
+    },
+    "target_type": {
+      "type": "string",
+      "enum": [
+        "classification",
+        "regression"
+      ]
+    },
+    "aggregate_output": {
+      "type": "object",
+      "oneOf": [
+        {
+          "weighted_sum": {
+            "$ref": "#/definitions/weighted_sum"
+          },
+          "required": [
+            "weighted_sum"
+          ] 
+        },
+        {
+          "weighted_mode": {
+            "$ref": "#/definitions/weighted_mode"
+          },
+          "required": [
+            "weighted_mode"
+          ] 
+        },
+        {
+          "logistic_regression": {
+            "$ref": "#/definitions/logistic_regression"
+          },
+          "required": [
+            "logistic_regression"
+          ] 
+        }
+      ]
+    }
+  },
+  "required": [
+    "feature_names",
+    "trained_models",
+    "target_type",
+    "aggregate_output"
+  ],
+  "type": "object",
+  "additionalProperties": false
+}

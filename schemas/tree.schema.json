@@ -1,0 +1,116 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "https://raw.githubusercontent.com/elastic/ml_json_schemas/master/schemas/tree.schema.json",
+    "title": "tree",
+    "description": "Technical specification for a decision tree model definition.",
+    "definitions": {
+      "numeric_relationship": {
+        "$id": "#numeric_relationship",
+        "type": "string",
+        "enum": [
+          "lt",
+          "lte",
+          "gt",
+          "gte"
+        ]
+      },
+      "tree_node": {
+        "$id": "#tree_node",
+        "type": "object",
+        "properties": {
+          "node_index": {
+            "type": "integer"
+          },
+          "split_feature": {
+            "type": "integer"
+          },
+          "split_gain": {
+            "type": "number"
+          },
+          "threshold": {
+            "type": "number"
+          },
+          "decision_type": {
+            "$ref": "#/definitions/numeric_relationship"
+          },
+          "default_left": {
+            "type": "boolean"
+          },
+          "left_child": {
+            "type": "integer"
+          },
+          "right_child": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "node_index",
+          "split_feature",
+          "threshold",
+          "decision_type",
+          "default_left",
+          "left_child",
+          "right_child"
+        ],
+        "additionalProperties": false
+      },
+      "tree_leaf": {
+        "$id": "#tree_leaf",
+        "type": "object",
+        "properties": {
+          "node_index": {
+            "type": "integer"
+          },
+          "leaf_value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "node_index",
+          "leaf_value"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "type": "object",
+    "properties": {
+      "feature_names": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "tree_structure": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/tree_node"
+            },
+            {
+              "$ref": "#/definitions/tree_leaf"
+            }
+          ]
+        }
+      },
+      "classification_labels": {
+        "items": {
+          "type": "string"
+        }
+      },
+      "target_type": {
+        "type": "string",
+        "enum": [
+          "classification",
+          "regression"
+        ]
+      }
+    },
+    "required": [
+      "tree_structure",
+      "feature_names",
+      "target_type"
+    ],
+    "additionalProperties": false
+  }
+  

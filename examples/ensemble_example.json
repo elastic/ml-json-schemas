@@ -1,12 +1,4 @@
 {
-  "input": {
-    "field_names": [
-      "col1",
-      "col2",
-      "col3",
-      "col4"
-    ]
-  },
   "preprocessors": [
     {
       "one_hot_encoding": {

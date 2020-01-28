@@ -1,0 +1,2 @@
+ml-json-schemas (json schemas and validation code for elastic supported machine learning model formats)
+Copyright 2012-2020 Elasticsearch B.V.

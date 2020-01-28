@@ -1,10 +1,16 @@
+# 
+# Copyright Elasticsearch B.V. and/or licensed to Elasticsearch B.V. under one
+# or more contributor license agreements. Licensed under the Elastic License;
+# you may not use this file except in compliance with the Elastic License.
+# 
+
 import jsonschema
 from jsonschema.validators import Draft4Validator
 import simplejson as json
 import os
 
 if __name__ == '__main__':
-    with open("schemas/definition.schema.json", 'r') as f:
+    with open("schemas/model_definition.schema.json", 'r') as f:
         data = f.read()
         definition = json.loads(data)
 

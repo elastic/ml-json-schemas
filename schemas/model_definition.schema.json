@@ -234,10 +234,14 @@
                       "items": {
                         "type": "number"
                       }
+                    },
+                    "num_classes": {
+                      "type": "integer"
                     }
                   },
                   "required": [
-                    "weights"
+                    "weights",
+                    "num_classes"
                   ]
                 }
               },

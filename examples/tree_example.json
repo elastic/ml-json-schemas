@@ -49,15 +49,18 @@
           "decision_type": "lte",
           "default_left": true,
           "left_child": 1,
-          "right_child": 2
+          "right_child": 2,
+          "number_samples": 10
         },
         {
           "node_index": 1,
-          "leaf_value": 1
+          "leaf_value": 1,
+          "number_samples": 8
         },
         {
           "node_index": 2,
-          "leaf_value": 2
+          "leaf_value": 2,
+          "number_samples": 2
         }
       ],
       "target_type": "regression"

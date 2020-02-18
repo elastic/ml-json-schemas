@@ -21,7 +21,9 @@
         "feature_names": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "minItems": 0,
+            "uniqueItems": true
           }
         },
         "classification_labels": {
@@ -113,7 +115,9 @@
         "feature_names": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "minItems": 0,
+            "uniqueItems": true
           }
         },
         "tree_structure": {
@@ -155,7 +159,9 @@
         "feature_names": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "minItems": 0,
+            "uniqueItems": true
           }
         },
         "trained_models": {

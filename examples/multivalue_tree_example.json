@@ -1,0 +1,69 @@
+{
+  "preprocessors": [
+    {
+      "one_hot_encoding": {
+        "field": "col1",
+        "hot_map": {
+          "male": "col1_male",
+          "female": "col1_female"
+        }
+      }
+    },
+    {
+      "target_mean_encoding": {
+        "field": "col2",
+        "feature_name": "col2_encoded",
+        "target_map": {
+          "S": 5.0,
+          "M": 10.0,
+          "L": 20
+        },
+        "default_value": 5.0
+      }
+    },
+    {
+      "frequency_encoding": {
+        "field": "col3",
+        "feature_name": "col3_encoded",
+        "frequency_map": {
+          "none": 0.75,
+          "true": 0.10,
+          "false": 0.15
+        }
+      }
+    }
+  ],
+  "trained_model": {
+    "tree": {
+      "feature_names": [
+        "col1_male",
+        "col1_female",
+        "col4"
+      ],
+      "tree_structure": [
+        {
+          "node_index": 0,
+          "split_feature": 0,
+          "split_gain": 12.0,
+          "threshold": 10.0,
+          "decision_type": "lte",
+          "default_left": true,
+          "left_child": 1,
+          "right_child": 2,
+          "number_samples": 10
+        },
+        {
+          "node_index": 1,
+          "leaf_value": [1, 2],
+          "number_samples": 8
+        },
+        {
+          "node_index": 2,
+          "leaf_value": [2, 3],
+          "number_samples": 2
+        }
+      ],
+      "target_type": "regression"
+    }
+  }
+}

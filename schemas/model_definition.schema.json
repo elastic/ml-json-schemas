@@ -21,10 +21,10 @@
         "feature_names": {
           "type": "array",
           "items": {
-            "type": "string",
-            "minItems": 0,
-            "uniqueItems": true
-          }
+            "type": "string"
+          },
+          "minItems": 0,
+          "uniqueItems": true
         },
         "classification_labels": {
           "items": {
@@ -115,10 +115,10 @@
         "feature_names": {
           "type": "array",
           "items": {
-            "type": "string",
-            "minItems": 0,
-            "uniqueItems": true
-          }
+            "type": "string"
+          },
+          "minItems": 0,
+          "uniqueItems": true
         },
         "tree_structure": {
           "type": "array",
@@ -159,10 +159,10 @@
         "feature_names": {
           "type": "array",
           "items": {
-            "type": "string",
-            "minItems": 0,
-            "uniqueItems": true
-          }
+            "type": "string"
+          },
+          "minItems": 0,
+          "uniqueItems": true
         },
         "trained_models": {
           "type": "array",
@@ -389,35 +389,35 @@
           {
             "properties": {
               "one_hot_encoding": {
-                "$ref": "#/definitions/one_hot_encoding" 
+                "$ref": "#/definitions/one_hot_encoding"
               }
             },
             "required": [
               "one_hot_encoding"
             ],
-            "additionalProperties": false 
+            "additionalProperties": false
           },
           {
             "properties": {
               "target_mean_encoding": {
-                "$ref": "#/definitions/target_mean_encoding" 
+                "$ref": "#/definitions/target_mean_encoding"
               }
             },
             "required": [
               "target_mean_encoding"
             ],
-            "additionalProperties": false 
+            "additionalProperties": false
           },
           {
             "properties": {
               "frequency_encoding": {
-                "$ref": "#/definitions/frequency_encoding" 
+                "$ref": "#/definitions/frequency_encoding"
               }
             },
             "required": [
               "frequency_encoding"
             ],
-            "additionalProperties": false 
+            "additionalProperties": false
           }
         ]
       },

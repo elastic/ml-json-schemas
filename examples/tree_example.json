@@ -36,9 +36,7 @@
   "trained_model": {
     "tree": {
       "feature_names": [
-        "col1_male",
-        "col1_female",
-        "col4"
+        "col1_male"
       ],
       "tree_structure": [
         {

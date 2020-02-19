@@ -37,10 +37,7 @@
     "ensemble": {
       "feature_names": [
         "col1_male",
-        "col1_female",
-        "col2_encoded",
-        "col3_encoded",
-        "col4"
+        "col2_encoded"
       ],
       "aggregate_output": {
         "weighted_sum": {
@@ -55,9 +52,7 @@
         {
           "tree": {
             "feature_names": [
-              "col1_male",
-              "col1_female",
-              "col4"
+              "col1_male"
             ],
             "tree_structure": [
               {
@@ -88,9 +83,7 @@
         {
           "tree": {
             "feature_names": [
-              "col2_encoded",
-              "col3_encoded",
-              "col4"
+              "col2_encoded"
             ],
             "tree_structure": [
               {

@@ -26,3 +26,8 @@ if __name__ == '__main__':
         example_data = f.read()
     tree_example = json.loads(example_data)
     validator.validate(tree_example, definition)
+
+    with open("examples/multivalue_tree_example.json", "r") as f:
+        example_data = f.read()
+    multivalue_tree_example = json.loads(example_data)
+    validator.validate(multivalue_tree_example, definition)

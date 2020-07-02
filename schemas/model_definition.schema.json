@@ -298,6 +298,29 @@
               "required": [
                 "logistic_regression"
               ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "exponent": {
+                  "type": "object",
+                  "description": "Given a weights vector $\\vec{w}$ as a parameter and an output vector from the ensemble $\\vec{x}$, it computes the exponent function $ \\exp(\\vec{w}^T \\vec{x})$.",
+                  "properties": {
+                    "weights": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "required": [
+                    "weights"
+                  ]
+                }
+              },
+              "required": [
+                "exponent"
+              ]
             }
           ]
         }
